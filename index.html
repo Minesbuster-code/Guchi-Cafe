@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to the Guchi Cafe!</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            color: #444;
+        }
+        h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .menu-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .menu-item img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border: 3px solid #ccc;
+        }
+        .menu-item p {
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+        .price {
+            font-weight: bold;
+            color: #d9534f;
+        }
+        select {
+            margin: 10px 0;
+            padding: 5px;
+            font-size: 1em;
+        }
+        .ingredients {
+            margin-top: 10px;
+            text-align: left;
+        }
+        details {
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        .cart {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #5cb85c;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .cart-total {
+            font-size: 1.5em;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #0275d8;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #025aa5;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to the Guchi Cafe!</h1>
+    <h2>Place Order here:</h2>
+
+    <div class="menu-item">
+        <img src="https://tse1.mm.bing.net/th?id=OIP.3l_poDs-ZSmraHwNPhkzrQHaFj&pid=Api&P=0&h=180" alt="Poha">
+        <p>Poha - <span class="price">$2.99</span></p>
+        <label for="poha-quantity">Select quantity:</label>
+        <select id="poha-quantity" onchange="updateCart()">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+        <details>
+            <summary>Ingredients</summary>
+            <div class="ingredients">Cumin, Rye, Peas, Salt, Fennel Seed, Coriander Seeds, Green Chilie, Lemon, Sugar, Turmeric, Oil</div>
+        </details>
+    </div>
+
+    <div class="menu-item">
+        <img src="https://tse4.mm.bing.net/th?id=OIP.AD8RJwh6EbujKEVr9ROv8gHaFK&pid=Api&P=0&h=180" alt="Upma">
+        <p>Upma - <span class="price">$2.99</span></p>
+        <label for="upma-quantity">Select quantity:</label>
+        <select id="upma-quantity" onchange="updateCart()">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+        <details>
+            <summary>Ingredients</summary>
+            <div class="ingredients">Cumin, Rye, Peas, Salt, Fennel Seed, Coriander Seeds, Green Chilie, Lemon, Sugar, Turmeric, Oil, Ginger, Chana Dal, Coconut, Peanuts (optional)</div>
+        </details>
+    </div>
+
+    <div class="menu-item">
+        <img src="https://tse2.mm.bing.net/th?id=OIP.oj-8PHwNKjIk6WJnerlNlAHaE8&pid=Api&P=0&h=180" alt="Eggs for 50p">
+        <p>Eggs - <span class="price">50p</span></p>
+        <label for="eggs-quantity">Select quantity:</label>
+        <select id="eggs-quantity" onchange="updateCart()">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+    </div>
+
+    <div class="cart">
+        <p>Cart Total: <span id="cart-total">$0.00</span></p>
+        <button onclick="checkout()">Checkout</button>
+    </div>
+
+    <script>
+        // Prices of items
+        const pohaPrice = 2.99;
+        const upmaPrice = 2.99;
+        const eggPrice = 0.50;
+
+        // Function to update cart total
+        function updateCart() {
+            const pohaQty = document.getElementById('poha-quantity').value;
+            const upmaQty = document.getElementById('upma-quantity').value;
+            const eggQty = document.getElementById('eggs-quantity').value;
+
+            const total = (pohaQty * pohaPrice) + (upmaQty * upmaPrice) + (eggQty * eggPrice);
+            document.getElementById('cart-total').innerText = `$${total.toFixed(2)}`;
+        }
+
+        // Checkout function (Placeholder)
+        function checkout() {
+            alert('Proceeding to checkout. Total amount: ' + document.getElementById('cart-total').innerText);
+        }
+    </script>
+
+</body>
+</html>
